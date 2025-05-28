@@ -28,7 +28,18 @@ class TokenBucketLimiter {
     }
 }
 
-class RateLimiter {
+/**
+ * # Example
+ * ```js
+ * const limiter = new TokenBucketRateLimiter(redis, {
+ *     capacity: 3, // 최대 토큰 수
+ *     refillRate: 1, // 초당 토큰 재충전 속도
+ *     ttlMs: 60 * 1000, // (사용자별) 토큰 버킷 TTL (밀리초)
+ *     debug: true // 디버그 모드 활성화
+ * })
+ * ```
+ */
+class TokenBucketRateLimiter {
     constructor(redis, options = {}) {
         this.redis = redis
         this.capacity = options.capacity ?? 3
@@ -101,4 +112,4 @@ class RateLimiter {
     }
 }
 
-module.exports = RateLimiter
+module.exports = TokenBucketRateLimiter
