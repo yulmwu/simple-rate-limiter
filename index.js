@@ -1,9 +1,10 @@
 const express = require('express')
 const Redis = require('ioredis')
-const FixedWindowRateLimiter = require('./fixedwindow')
-// const TokenBucketRateLimiter = require('./tokenbucket')
+const FixedWindowRateLimiter = require('./ratelimit/fixedwindow')
+// const TokenBucketRateLimiter = require('./ratelimit/tokenbucket')
 
 const redis = new Redis() // 외부에서 Redis 인스턴스 생성
+
 // const limiter = new TokenBucketRateLimiter(redis, {
 //     capacity: 3, // 최대 토큰 수
 //     refillRate: 1, // 초당 토큰 재충전 속도
